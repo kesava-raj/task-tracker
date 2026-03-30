@@ -1,0 +1,117 @@
+C:\Users\dell\Downloads\task-tracker\app\components\BoardView.tsx
+  Line 30: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 48: 'cards' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 62: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 94: A `require()` style import is forbidden. (@typescript-eslint/no-require-imports)
+C:\Users\dell\Downloads\task-tracker\app\components\HomeView.tsx
+  Line 23: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`. (react/no-unescaped-entities)
+  Line 23: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`. (react/no-unescaped-entities)
+  Line 100: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+C:\Users\dell\Downloads\task-tracker\app\components\ListView.tsx
+  Line 46: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 51: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 120: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 123: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 150: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 173: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+C:\Users\dell\Downloads\task-tracker\app\components\Modals.tsx
+  Line 8: 'db' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 8: 'ui' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 8: 'updateDb' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 8: 'setPanelTaskId' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 8: 'setExpandedGroups' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 8: 'setExpandedRows' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 8: 'setUi' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 10: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 11: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 12: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 26: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 35: 'setUi' is assigned a value but never used. (@typescript-eslint/no-unused-vars)
+  Line 47: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\dell\Downloads\task-tracker\app\components\Modals.tsx:47:11
+  45 |         const p = db.projects.find((pr) => pr.id === projId);
+  46 |         if (p) {
+> 47 |           setName(p.name);
+     |           ^^^^^^^ Avoid calling setState() directly within an effect
+  48 |           setDesc(p.description || "");
+  49 |           setEmoji(p.emoji);
+  50 |           setColor(p.color); (react-hooks/set-state-in-effect)
+  Line 162: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\dell\Downloads\task-tracker\app\components\Modals.tsx:162:11
+  160 |         const t = db.tasks.find((task) => task.id === taskId);
+  161 |         if (t) {
+> 162 |           setTitle(t.title || "");
+      |           ^^^^^^^^ Avoid calling setState() directly within an effect
+  163 |           setDesc(t.description || "");
+  164 |           setStatus(t.status || "todo");
+  165 |           setPri(t.priority || "none"); (react-hooks/set-state-in-effect)
+  Line 199: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 200: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+C:\Users\dell\Downloads\task-tracker\app\components\MyTasksView.tsx
+  Line 4: 'ST' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 16: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`. (react/no-unescaped-entities)
+C:\Users\dell\Downloads\task-tracker\app\components\RightPanel.tsx
+  Line 24: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\dell\Downloads\task-tracker\app\components\RightPanel.tsx:24:7
+  22 |   useEffect(() => {
+  23 |     if (t) {
+> 24 |       setLocalTitle(t.title || "");
+     |       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  25 |       setLocalAssignee(t.assignee || "");
+  26 |       setLocalStart(t.startDate || "");
+  27 |       setLocalDue(t.dueDate || ""); (react-hooks/set-state-in-effect)
+  Line 40: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 47: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 82: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 215: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+C:\Users\dell\Downloads\task-tracker\app\components\Sidebar.tsx
+  Line 46: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 70: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 73: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 86: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+C:\Users\dell\Downloads\task-tracker\app\components\Topbar.tsx
+  Line 109: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+C:\Users\dell\Downloads\task-tracker\app\store.tsx
+  Line 3: 'Project' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 3: 'Task' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 3: 'Comment' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 28: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+  Line 55: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\dell\Downloads\task-tracker\app\store.tsx:55:9
+  53 |       const stored = localStorage.getItem("mpb_ws");
+  54 |       if (stored) {
+> 55 |         setDb(JSON.parse(stored));
+     |         ^^^^^ Avoid calling setState() directly within an effect
+  56 |       } else {
+  57 |         const seed = createSeedData();
+  58 |         setDb(seed); (react-hooks/set-state-in-effect)
+  Line 61: 'e' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 69: 'e' is defined but never used. (@typescript-eslint/no-unused-vars)
