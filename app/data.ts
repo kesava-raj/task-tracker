@@ -9,9 +9,9 @@ export const createSeedData = (): DB => {
 
   return {
     projects: [
-      { id: p1, name: "ClearBid", description: "E-Tendering & Bidding Platform", emoji: "🎯", color: "#6366f1", createdAt: "2026-03-01" },
-      { id: p2, name: "Seragen", description: "Internal Banking System Suite", emoji: "🏦", color: "#3b82f6", createdAt: "2026-03-10" },
-      { id: p3, name: "MyProBuddy", description: "Internal tooling & workspace", emoji: "🚀", color: "#10b981", createdAt: "2026-03-20" },
+      { id: p1, name: "ClearBid", description: "E-Tendering & Bidding Platform", emoji: "🎯", color: "#6366f1", status: "active", owner: "Arjun K", startDate: "2026-03-01", dueDate: "2026-10-01", createdAt: "2026-03-01" },
+      { id: p2, name: "Seragen", description: "Internal Banking System Suite", emoji: "🏦", color: "#3b82f6", status: "active", owner: "Divya M", startDate: "2026-03-10", dueDate: "", createdAt: "2026-03-10" },
+      { id: p3, name: "MyProBuddy", description: "Internal tooling & workspace", emoji: "🚀", color: "#10b981", status: "completed", owner: "Priya S", startDate: "2026-03-20", dueDate: "2026-04-01", createdAt: "2026-03-20" },
     ],
     assignees: ["Arjun K", "Priya S", "Karthik R", "Divya M"],
     tasks: [

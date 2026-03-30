@@ -99,7 +99,15 @@ export const Topbar = () => {
       )}
 
       {inProj && (
-        <div className="tb-right">
+        <div className="tb-right" style={{ display: "flex", gap: "8px" }}>
+          <button
+            className="btn-ghost"
+            style={{ padding: "6px 12px", border: "1px solid var(--bdr)" }}
+            onClick={() => setModals((m: any) => ({ ...m, proj: ui.pid }))}
+            title="Edit Project Details"
+          >
+            ⚙️ Project Settings
+          </button>
           <button
             className="btn-new"
             onClick={() => setModals((m: any) => ({ ...m, task: { open: true, editId: null, parentId: null, defaultStatus: null } }))}

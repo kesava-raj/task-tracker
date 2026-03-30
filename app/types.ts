@@ -7,6 +7,10 @@ export interface Project {
   description: string;
   emoji: string;
   color: string;
+  status: "active" | "onhold" | "completed";
+  owner: string;
+  startDate: string;
+  dueDate: string;
   createdAt?: string;
 }
 

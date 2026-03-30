@@ -11,6 +11,10 @@ const ProjectModal = ({ isOpen, projId, onClose }: { isOpen: boolean; projId: st
   const [desc, setDesc] = useState("");
   const [emoji, setEmoji] = useState(EMOJIS[0]);
   const [color, setColor] = useState(COLORS[0]);
+  const [status, setStatus] = useState<"active" | "onhold" | "completed">("active");
+  const [owner, setOwner] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [dueDate, setDueDate] = useState("");
   const [err, setErr] = useState(false);
 
   useEffect(() => {
@@ -22,12 +26,20 @@ const ProjectModal = ({ isOpen, projId, onClose }: { isOpen: boolean; projId: st
           setDesc(p.description || "");
           setEmoji(p.emoji);
           setColor(p.color);
+          setStatus(p.status || "active");
+          setOwner(p.owner || "");
+          setStartDate(p.startDate || "");
+          setDueDate(p.dueDate || "");
         }
       } else {
         setName("");
         setDesc("");
         setEmoji(EMOJIS[0]);
         setColor(COLORS[0]);
+        setStatus("active");
+        setOwner("");
+        setStartDate("");
+        setDueDate("");
       }
       setErr(false);
     }
@@ -40,7 +52,7 @@ const ProjectModal = ({ isOpen, projId, onClose }: { isOpen: boolean; projId: st
       setErr(true);
       return;
     }
-    const data = { name: name.trim(), description: desc.trim(), emoji, color };
+    const data = { name: name.trim(), description: desc.trim(), emoji, color, status, owner, startDate, dueDate };
     
     if (projId && typeof projId === "string") {
       const newProjects = [...db.projects];
@@ -48,7 +60,7 @@ const ProjectModal = ({ isOpen, projId, onClose }: { isOpen: boolean; projId: st
       newProjects[idx] = { ...newProjects[idx], ...data };
       updateDb({ ...db, projects: newProjects });
     } else {
-      const newProject = { id: uid(), ...data, createdAt: today() };
+      const newProject = { id: uid(), ...data, createdAt: today() } as import("../types").Project;
       updateDb({ ...db, projects: [...db.projects, newProject] });
     }
     onClose();
@@ -104,6 +116,33 @@ const ProjectModal = ({ isOpen, projId, onClose }: { isOpen: boolean; projId: st
                   onClick={() => setColor(c)}
                 ></div>
               ))}
+            </div>
+          </div>
+          <div className="fg2">
+            <div className="fg">
+              <label className="field-label">Status</label>
+              <select className="field-input" value={status} onChange={(e) => setStatus(e.target.value as any)}>
+                <option value="active">🟢 Active</option>
+                <option value="onhold">⏸ On Hold</option>
+                <option value="completed">✓ Completed</option>
+              </select>
+            </div>
+            <div className="fg">
+              <label className="field-label">Project Lead</label>
+              <select className="field-input" value={owner} onChange={(e) => setOwner(e.target.value)}>
+                <option value="">Unassigned</option>
+                {(db.assignees || []).map((a) => (
+                  <option key={a} value={a}>{a}</option>
+                ))}
+              </select>
+            </div>
+            <div className="fg">
+              <label className="field-label">Start Date</label>
+              <input className="field-input" type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+            </div>
+            <div className="fg">
+              <label className="field-label">Target Date</label>
+              <input className="field-input" type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
             </div>
           </div>
         </div>
